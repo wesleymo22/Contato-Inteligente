@@ -1,6 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { BadGatewayException, Injectable } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
+import { IGithubRepository } from './interfaces/github-repository.interface';
 
 @Injectable()
 export class GithubService {
@@ -8,7 +9,7 @@ export class GithubService {
 
   constructor(private readonly httpService: HttpService) {}
 
-  async getRepositories() {
+  async getRepositories(): Promise<IGithubRepository[]> {
     try {
       const response = await lastValueFrom(
         this.httpService.get(`${this.BASE_URL}`, {

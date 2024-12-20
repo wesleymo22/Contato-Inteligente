@@ -6,7 +6,7 @@ export class GithubController {
   constructor(private readonly githubService: GithubService) {}
 
   @Get()
-  buscarRepositorios() {
+  getRepositories() {
     return this.githubService.getRepositories();
   }
 }
