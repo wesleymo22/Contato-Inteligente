@@ -12,7 +12,7 @@ export class GithubService {
     try {
       const response = await lastValueFrom(
         this.httpService.get(`${this.BASE_URL}`, {
-          params: { per_page: 100 },
+          params: { per_page: 10 },
         }),
       );
 
@@ -28,6 +28,7 @@ export class GithubService {
         name: repo.name,
         description: repo.description,
         language: repo.language,
+        date: repo.created_at,
       }));
     } catch (error) {
       console.error(error.response?.data);
